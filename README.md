@@ -1,34 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+#Notes
 
-## Getting Started
+## Link with styles
 
-First, run the development server:
+- before nextJS 13, if we want to add styles to a Link component,
+  we should enclose that in a <a> tag and that <a> tag is placed in <Link>
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+### \_app.js
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+-Before nextJS 13, \_app.js act as the wrapper for the components.
+-so if a layout is defined, we can wrapper that with the layout component
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### Fragment component in react
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- Fragment in react is a lightweight component, that allows us to
+  GROUP xle elements without adding extra nodes to DOM.It's useful
+  when we have xle elements to return from a component but don't
+  want to introduce additional HTML elements like <div> or <span>
+- we can use <fragment></fragment> or <> </>
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### event.preventDefault()
 
-## Learn More
+- it prevent the default action associated with the event(like form submission, link navigation)
+  eg: it allow us to handle form submission with javascript without reloading the page
 
-To learn more about Next.js, take a look at the following resources:
+### useRef() hook
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- allow us to persist values between renders without causing re-render
+- unlike useState(), useRef doesn't trigger re-render when its value changes [ideal to be used to store values that don't affect rendering flow, such as timers or external libraries ]
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### All react hooks should be called directly in the component function,
 
-## Deploy on Vercel
+- not in any nested block statements
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### to add resources freely
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- icons -https://heroicons.com/
+- images -https://unsplash.com/
