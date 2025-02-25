@@ -2,16 +2,13 @@ function RightIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
-      stroke="currentColor"
-      className="size-6"
+      viewBox="0 0 20 20"
+      fill="currentColor"
     >
       <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
+        fillRule="evenodd"
+        d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+        clipRule="evenodd"
       />
     </svg>
   );

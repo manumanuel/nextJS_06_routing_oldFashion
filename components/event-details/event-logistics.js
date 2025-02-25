@@ -1,5 +1,5 @@
-import LocationIcon from "../../icons/location-icon";
-import DateIcon from "../../icons/date-icon";
+import LocationIcon from "../icons/location-icon";
+import DateIcon from "../icons/date-icon";
 import LogisticsItem from "./logistics-item";
 import classes from "./event-logistics.module.css";
 

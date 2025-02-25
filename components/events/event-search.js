@@ -8,7 +8,8 @@ function EventSearch(props) {
   const inputMonthRef = useRef();
 
   function submitHandler(event) {
-    event.preventdefault();
+    event.preventDefault();
+
     const selectedYear = inputYearRef.current.value;
     const selectedMonth = inputMonthRef.current.value;
 
@@ -43,7 +44,7 @@ function EventSearch(props) {
           </select>
         </div>
       </div>
-      <Button className={classes.button}>Find Events</Button>
+      <Button>Find Events</Button>
     </form>
   );
 }
