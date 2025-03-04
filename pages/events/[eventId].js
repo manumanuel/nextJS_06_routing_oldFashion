@@ -10,6 +10,7 @@ import EventLogistics from "../../components/event-details/event-logistics";
 import EventContent from "../../components/event-details/event-content";
 import { Fragment } from "react";
 import ErrorAlert from "../../components/ui/error-alert";
+import Head from "next/head";
 //import { getFeaturedEvents } from "../../dummy-data";
 
 function EventDetail(props) {
@@ -32,6 +33,10 @@ function EventDetail(props) {
 
   return (
     <Fragment>
+      <Head>
+        <title>{event.title}</title>
+        <meta name="description" content={event.description} />
+      </Head>
       <EventSummary title={event.title} />
       <EventLogistics
         date={event.date}

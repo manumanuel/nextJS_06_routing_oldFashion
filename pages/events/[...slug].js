@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { Fragment } from "react";
 import { link } from "next/link";
+import Head from "next/head";
 
 import { getFilteredEvents } from "../../dummy-data";
 import EventList from "../../components/events/event-list";
@@ -67,24 +68,48 @@ function FilteredEventPage(props) {
   );
   */
 
+  let pageHeadHandler = (
+    <Head>
+      <title>Apply Filter</title>
+      <meta name="description" content="Apply Filter" />
+    </Head>
+  );
+
   if (!props.events || props.events.length === 0) {
     return (
-      <ErrorAlert>
-        <p>Invalid Filter. Please check your filter</p>;
-      </ErrorAlert>
+      <Fragment>
+        {pageHeadHandler}
+        <ErrorAlert>
+          <p>Invalid Filter. Please check your filter</p>;
+        </ErrorAlert>
+      </Fragment>
     );
   }
 
   if (props.hasError) {
     return (
-      <ErrorAlert>
-        <p>Invalid Filter. Please adjust your values</p>;
-      </ErrorAlert>
+      <Fragment>
+        {pageHeadHandler}
+        <ErrorAlert>
+          <p>Invalid Filter. Please adjust your values</p>;
+        </ErrorAlert>
+      </Fragment>
     );
   }
 
+  pageHeadHandler = (
+    <Head>
+      <title>Apply Filter</title>
+      <meta
+        name="description"
+        content={`filter applied for the period of ${props.date.year}/${props.date.month}`}
+      />
+    </Head>
+  );
+
   return (
     <Fragment>
+      {pageHeadHandler}
       <ResultsTitle date={props.date}></ResultsTitle>
       <EventList items={props.events} />;
     </Fragment>

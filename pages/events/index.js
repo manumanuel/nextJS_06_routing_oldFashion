@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { Fragment } from "react";
+import Head from "next/head";
 
 import EventList from "../../components/events/event-list";
 import EventSearch from "../../components/events/event-search";
@@ -18,6 +19,13 @@ function Event(props) {
 
   return (
     <Fragment>
+      <Head>
+        <title>All Event Handler</title>
+        <meta
+          name="description"
+          content="Helps to engage in various events depending on your character"
+        />
+      </Head>
       <EventSearch onSearch={findEventsHandler} />
       <EventList items={events} />
     </Fragment>

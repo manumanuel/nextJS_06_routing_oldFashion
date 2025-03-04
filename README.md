@@ -36,3 +36,28 @@
 
 - icons -https://heroicons.com/
 - images -https://unsplash.com/
+
+## Implemented pre-rendering
+
+- getStaticProps, getStaticPaths
+- getServerSideProps
+
+## Configure Head section
+
+- we can add it in the landing page of an app
+- import Head from 'next/head'
+- eg: <Head>
+  <title>Name</title>  [appears on the browser window/tab, used by search engines for indexing the page]
+  <meta name="" description="" /> [not visible directly to users, but impt for SEO and page context,especially the description meta tag which appears in search results]
+  </Head>
+  - various meta tags are used to include a variety of information like page description, author, charset,
+  viewport settings
+ eg:<Head>
+  <meta name="description" content="This is a description of the page." />
+  <meta name="keywords" content="Next.js, SEO, web development" />
+</Head>
+Here name attribute specify the type of information being provided
+- we can also define <Head> section dynamically so that it can implement in different sections of the same page
+- eg implemented in [slug] page
+- if we want to add a generic property which will be available across the application, we can define it in the
+  \_app.js file [eg: define viewport]
