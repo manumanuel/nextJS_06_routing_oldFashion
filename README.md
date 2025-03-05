@@ -61,3 +61,26 @@ Here name attribute specify the type of information being provided
 - eg implemented in [slug] page
 - if we want to add a generic property which will be available across the application, we can define it in the
   \_app.js file [eg: define viewport]
+- if the same meta attribute is specified in nested pages, the child meta attribute will override the parent attribute
+
+## use of \_document.js file
+
+- used for customizing the HTML document structure
+- it should add in the root folder
+- it allows us to modify the default HTML page template, which is rendered for every page in the application
+
+### uses of \_document
+
+- adding global customizations to the <head> section
+  eg: global meta tags, external stylesheet, external scripts
+- modifying the <html> & <body> tags [adding custom classes & attributes]
+- adding global scripts that need to be loaded for every page
+- customizing the initial lang attribute for <html> tag
+
+## Image optimizations
+
+- Image helper class helps to load the optimized images on the fly in webp format
+- ie it will produce images of different resolution on the page request
+- it also support lazy loading [based on the resolution change, it will call for desired responsive image]
+- import Image from 'next/image';
+- <Image src='' alt='' width={} height={}>
