@@ -11,6 +11,7 @@ import EventContent from "../../components/event-details/event-content";
 import { Fragment } from "react";
 import ErrorAlert from "../../components/ui/error-alert";
 import Head from "next/head";
+import Comments from "../../components/input/comments";
 //import { getFeaturedEvents } from "../../dummy-data";
 
 function EventDetail(props) {
@@ -45,6 +46,7 @@ function EventDetail(props) {
         imageAlt={event.title}
       />
       <EventContent>{event.description}</EventContent>
+      <Comments eventId={event.Id} />
     </Fragment>
   );
 }
