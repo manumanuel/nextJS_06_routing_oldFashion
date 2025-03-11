@@ -23,7 +23,7 @@ function EventDetail(props) {
 
   /*get data through api for pre-render using getServersideProps*/
   const event = props.event;
-
+  //console.log(event);
   if (!event) {
     return (
       <ErrorAlert>
@@ -46,7 +46,7 @@ function EventDetail(props) {
         imageAlt={event.title}
       />
       <EventContent>{event.description}</EventContent>
-      <Comments eventId={event.Id} />
+      <Comments eventId={event.id} />
     </Fragment>
   );
 }
