@@ -1,4 +1,10 @@
-function CommentsHandler(req, res) {
+import { MongoClient } from "mongodb";
+async function CommentsHandler(req, res) {
+  const client = await MongoClient.connect(
+    "mongodb+srv://manuelmanu008:6W1jYv7l8tAVFx7r@cluster0.6nblf.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+  );
+  const db = client.db("newsletter");
+
   const eventId = req.query.eventId;
 
   if (req.method === "POST") {
@@ -11,8 +17,13 @@ function CommentsHandler(req, res) {
       id: Date.now().toString(),
       name,
       text,
+      eventId,
     };
     console.log(savedComment);
+    const result = await db.collection("comments").insertOne(savedComment);
+    console.log(result);
+    client.close();
+    savedComment.id = result.insertedId;
     res.status(200).json({ message: "success", data: savedComment });
   }
 

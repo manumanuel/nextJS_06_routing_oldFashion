@@ -84,3 +84,31 @@ Here name attribute specify the type of information being provided
 - it also support lazy loading [based on the resolution change, it will call for desired responsive image]
 - import Image from 'next/image';
 - <Image src='' alt='' width={} height={}>
+
+## Monogodb implementation
+
+### steps to follow in mongo cloud server [Atlas]
+
+- we should create a cluster in mongodb cloud server
+- cluster is like server in sql
+- now its created using nodejs
+- we have to add a username with password and ip to be whitelisted for connection
+- when we do the connection with node it provide a connection string. we can use that from the application
+- in this connection string username, password and dbname are given as <username> we have to replace it with real credentials
+
+### steps to follow in client side
+
+- in the application side (client side), we have to install mongodb using npm [npm install mongodb]
+- import MongoClient from "mongodb"
+- using this MongoClient we can establish the connection in client side
+- sometimes the connectionstring doesn't have database name
+- then we can specify it separately as shown below,
+  const client = await MongoClient.connect(
+  "mongodb+srv://manuelmanu008:6W1jYv7l8tAVFx7r@cluster0.6nblf.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+  );
+  const db = client.db("newsletter");
+- every data to be inserted in mongodb is termed as document
+- below added a sample for inserting document,
+  db.collection("emails").insertOne({ email: userEmail });
+  here collection is the db name, insertOne insert document with fields. so in this document only one field exist, email
+  - insert command can be insertOne/insertMany
