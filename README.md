@@ -108,7 +108,21 @@ Here name attribute specify the type of information being provided
   );
   const db = client.db("newsletter");
 - every data to be inserted in mongodb is termed as document
+
+### insert data
+
 - below added a sample for inserting document,
   db.collection("emails").insertOne({ email: userEmail });
   here collection is the db name, insertOne insert document with fields. so in this document only one field exist, email
+
   - insert command can be insertOne/insertMany
+
+  ### get data
+
+  - for getting data from mongo server, we are using 'find'.
+  - for sorting in descending order we should specify -1 in sort method with corresponding column name.
+    eg : sort({columnName: -1})
+  - for incremental sort we can use 1.
+    eg of complete get req,
+    db.collection("collectionName").find().sort({columnName: -1}).toArray();
+  - toArray() added to make the return set of data to array

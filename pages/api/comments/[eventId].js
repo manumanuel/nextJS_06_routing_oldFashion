@@ -21,18 +21,25 @@ async function CommentsHandler(req, res) {
     };
     console.log(savedComment);
     const result = await db.collection("comments").insertOne(savedComment);
-    console.log(result);
+    //console.log(result);
     client.close();
     savedComment.id = result.insertedId;
     res.status(200).json({ message: "success", data: savedComment });
   }
 
   if (req.method === "GET") {
-    const dummyList = [
+    /*  const dummyList = [
       { id: "v1", name: "Fejo", text: "Rapper from kerala" },
       { id: "v2", name: "Dabzee", text: "Singer from kerala" },
     ];
-    res.status(200).json({ data: dummyList });
+    res.status(200).json({ data: dummyList }); */
+
+    const allComments = await db
+      .collection("comments")
+      .find()
+      .sort({ _id: -1 })
+      .toArray();
+    res.status(200).json({ data: allComments });
   }
 }
 export default CommentsHandler;
