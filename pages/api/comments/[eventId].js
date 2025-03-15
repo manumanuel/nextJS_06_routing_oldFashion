@@ -1,8 +1,7 @@
-import { MongoClient } from "mongodb";
+import { connectDB } from "../../../components/helpers/db-utils";
+
 async function CommentsHandler(req, res) {
-  const client = await MongoClient.connect(
-    "mongodb+srv://manuelmanu008:6W1jYv7l8tAVFx7r@cluster0.6nblf.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-  );
+  const client = await connectDB();
   const db = client.db("newsletter");
 
   const eventId = req.query.eventId;
@@ -19,12 +18,14 @@ async function CommentsHandler(req, res) {
       text,
       eventId,
     };
-    console.log(savedComment);
-    const result = await db.collection("comments").insertOne(savedComment);
-    //console.log(result);
+    try {
+      const result = await db.collection("comments").insertOne(savedComment);
+      savedComment.id = result.insertedId;
+      res.status(200).json({ message: "success", data: savedComment });
+    } catch (error) {
+      res.status(500).json({ message: "insertion failed" });
+    }
     client.close();
-    savedComment.id = result.insertedId;
-    res.status(200).json({ message: "success", data: savedComment });
   }
 
   if (req.method === "GET") {
@@ -41,5 +42,6 @@ async function CommentsHandler(req, res) {
       .toArray();
     res.status(200).json({ data: allComments });
   }
+  client.close();
 }
 export default CommentsHandler;

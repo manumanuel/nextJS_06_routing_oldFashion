@@ -1,17 +1,6 @@
-import { MongoClient } from "mongodb";
+import { connectDB, registerEmail } from "../../components/helpers/db-utils";
 
-let client, db;
-async function connectdb() {
-  const client = await MongoClient.connect(
-    "mongodb+srv://manuelmanu008:6W1jYv7l8tAVFx7r@cluster0.6nblf.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-  );
-  return client;
-}
-
-async function registerEmail(client, data) {
-  db = client.db("newsletter");
-  await db.collection("emails").insertOne(data);
-}
+let client;
 
 async function EmailHandler(req, res) {
   if (req.method === "POST") {
@@ -22,7 +11,7 @@ async function EmailHandler(req, res) {
     }
 
     try {
-      client = await connectdb();
+      client = await connectDB();
     } catch (error) {
       res.status(500).json({ message: "db connect error" });
       return;
