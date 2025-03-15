@@ -37,7 +37,7 @@ async function CommentsHandler(req, res) {
 
     const allComments = await db
       .collection("comments")
-      .find()
+      .find({ eventId: eventId }) //for filtering, no filter filter needs either pass {} or keep it blank
       .sort({ _id: -1 })
       .toArray();
     res.status(200).json({ data: allComments });
