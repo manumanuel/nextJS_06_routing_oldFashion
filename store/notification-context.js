@@ -8,13 +8,17 @@ const NotificationContext = createContext({
 
 export function NotificationContextProvider(props) {
   const [activeNotification, setActiveNotification] = useState();
-  
+
   useEffect(() => {
-    if (activeNotification && (activeNotification.status === "success" || activeNotification.status === "error")) {
+    if (
+      activeNotification &&
+      (activeNotification.status === "success" ||
+        activeNotification.status === "error")
+    ) {
       const timer = setTimeout(() => {
         setActiveNotification(null);
       }, 3000);
-  
+
       return () => {
         clearTimeout(timer);
       };
@@ -35,8 +39,10 @@ export function NotificationContextProvider(props) {
     hideNotification: hideNotificationHandler,
   };
 
-  <NotificationContext.Provider value={context}>
-    {props.children}
-  </NotificationContext.Provider>;
+  return (
+    <NotificationContext.Provider value={context}>
+      {props.children}
+    </NotificationContext.Provider>
+  );
 }
 export default NotificationContext;
