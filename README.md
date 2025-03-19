@@ -126,3 +126,11 @@ Here name attribute specify the type of information being provided
     eg of complete get req,
     db.collection("collectionName").find().sort({columnName: -1}).toArray();
   - toArray() added to make the return set of data to array
+
+## React Context
+
+- react's method for state management
+- useContext hook is used from 'react'
+- context object defines with common variable & methods that are invoked from different forms
+- wrapping the defined context with Provider so that we can pass the props as children
+-

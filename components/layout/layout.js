@@ -4,8 +4,8 @@ import Notification from "../ui/notification";
 import NotificationContext from "../../store/notification-context";
 
 function Layout(props) {
-  const notificationContext = useContext(NotificationContext);
-  const activeNotification = notificationContext.notification;
+  const notificationCtx = useContext(NotificationContext);
+  const activeNotification = notificationCtx.notification;
   return (
     <Fragment>
       <MainHeader />
