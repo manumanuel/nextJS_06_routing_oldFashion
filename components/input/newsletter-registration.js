@@ -10,6 +10,8 @@ function NewsletterRegistration() {
     event.preventDefault();
 
     const enteredEmail = emailInputRef.current.value;
+    //console.log(enteredEmail);
+    //console.log(notificationCtx);
     if (!enteredEmail || !enteredEmail.includes("@")) {
       console.log("Invalid email");
       return;

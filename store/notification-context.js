@@ -26,6 +26,7 @@ export function NotificationContextProvider(props) {
   }, [activeNotification]);
 
   function showNotificationHandler(notificationData) {
+    //console.log(notificationData);
     setActiveNotification(notificationData);
   }
 
