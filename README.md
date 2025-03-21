@@ -133,4 +133,3 @@ Here name attribute specify the type of information being provided
 - useContext hook is used from 'react'
 - context object defines with common variable & methods that are invoked from different forms
 - wrapping the defined context with Provider so that we can pass the props as children
--
